@@ -13,8 +13,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'profile', renderMode: RenderMode.Prerender },
   { path: 'reset', renderMode: RenderMode.Prerender },
   
-  // Dynamic routes - explicitly set to client-side rendering
-  { path: 'subcategories/:id', renderMode: RenderMode.Client },
+  
   { path: 'details/:id', renderMode: RenderMode.Client },
   { path: 'checkout/:id', renderMode: RenderMode.Client },
   
