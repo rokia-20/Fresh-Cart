@@ -1,7 +1,7 @@
 export interface Product {
     sold: number;
     images: string[];
-    subcategory: Subcategory[];
+    
     ratingsQuantity: number;
     _id: string;
     title: string;
