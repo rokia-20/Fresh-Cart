@@ -38,16 +38,7 @@ export const routes: Routes = [
           data: { skipPrerender: true }
         },
         {path:'categories', component:CategoriesComponent, title: 'categories page'},
-          // Dynamic routes that should not be prerendered
-          {
-            path: 'subcategories/:id',
-            title: 'subcategories page',
-            loadComponent: () =>
-              import('./features/categories/components/sub-categories/sub-categories.component')
-                .then((c) => c.SubCategoriesComponent),
-            // This tells Angular to handle this route on the client side only
-            data: { skipPrerender: true }
-          },
+          
           {
             path: 'category/:id',
             title: 'Category Products',
