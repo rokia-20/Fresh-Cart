@@ -17,7 +17,5 @@ export class CategoriesService {
     return this.httpclient.get(environment.baseUrl + `categories/${categoryId}`)
   }
 
-  getSubCategories(categoryId: string): Observable<any>{
-    return this.httpclient.get(environment.baseUrl + `categories/${categoryId}/subcategories`);
-  }
+ 
 }
