@@ -22,7 +22,6 @@ export interface Product {
     quantity: number;
     imageCover: string;
     ratingsAverage: number;
-    subcategory: Subcategory[];
     category: CategoryRef;
     brand: BrandRef;
 }
