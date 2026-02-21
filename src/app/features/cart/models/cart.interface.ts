@@ -27,12 +27,7 @@ export interface Product {
     brand: BrandRef;
 }
 
-export interface Subcategory {
-    _id: string;
-    name: string;
-    slug: string;
-    category: string; 
-}
+
 
 export interface CategoryRef {
     _id: string;
