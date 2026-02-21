@@ -4,12 +4,7 @@ export interface ShippingAddress {
     city: string;
   }
   
-  export interface Subcategory {
-    _id: string;
-    name: string;
-    slug: string;
-    category: string; // category id
-  }
+
   
   export interface Category {
     _id: string;
@@ -26,7 +21,7 @@ export interface ShippingAddress {
   }
   
   export interface Product {
-    subcategory: Subcategory[];
+   
     ratingsQuantity: number;
     _id: string;
     title: string;
