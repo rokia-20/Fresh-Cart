@@ -1,0 +1,71 @@
+<section class="container mx-auto p-6 space-y-10">
+    @for (order of ordersList; track order._id) {
+      <div class="bg-gradient-to-br from-gray-50 to-white shadow-xl rounded-3xl p-8 border border-gray-200 hover:shadow-2xl transition-all duration-300">
+  
+        <div class="flex justify-between items-center border-b pb-4">
+          <h2 class="text-xl font-extrabold text-gray-800 tracking-wide">
+            🛒 Order #{{order.id}}
+          </h2>
+          
+          <div class="flex space-x-2">
+            <span 
+              class="px-4 py-1 text-xs font-semibold rounded-full shadow-sm"
+              [ngClass]="order.isPaid ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'">
+              {{ order.isPaid ? '✅ Paid' : '❌ Unpaid' }}
+            </span>
+            <span 
+              class="px-4 py-1 text-xs font-semibold rounded-full shadow-sm"
+              [ngClass]="order.isDelivered ? 'bg-blue-200 text-blue-800' : 'bg-yellow-200 text-yellow-800'">
+              {{ order.isDelivered ? '📦 Delivered' : '⌛ Pending' }}
+            </span>
+          </div>
+        </div>
+  
+        <!-- Shipping Address -->
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-location-dot text-[#0aad0a]"></i> Shipping Address
+          </h3>
+          <div class="text-gray-600 space-y-1 text-sm bg-gray-100 rounded-xl p-4">
+            <p><span class="font-medium">🏠 Details:</span> {{order.shippingAddress.details}}</p>
+            <p><span class="font-medium">📞 Phone:</span> {{order.shippingAddress.phone}}</p>
+            <p><span class="font-medium">🌆 City:</span> {{order.shippingAddress.city}}</p>
+          </div>
+        </div>
+  
+        <!-- Total Price -->
+        <div class="flex justify-between items-center border-t pt-6 mt-6">
+          <h3 class="text-lg font-semibold text-gray-800">Total Price</h3>
+          <span class="px-6 py-2 rounded-full bg-[#0aad0a] text-white text-lg font-bold shadow-md">
+            {{order.totalOrderPrice | currency:'GBP'}}
+          </span>
+        </div>
+  
+        <!-- Cart Items -->
+        <div class="mt-8">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-box-open text-[#0aad0a]"></i> Cart Items
+          </h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            @for (item of order.cartItems; track item._id) {
+              <div class="flex items-start bg-white border border-gray-200 p-4 rounded-2xl shadow-sm hover:shadow-lg transition">
+                <!-- Product Image -->
+                <img [src]="item.product.imageCover" [alt]="item.product.title" 
+                    class="w-20 h-20 object-cover rounded-lg mr-4 border">
+  
+                <!-- Product Info -->
+                <div class="flex-1">
+                  <h4 class="font-semibold text-gray-800 text-base line-clamp-1">{{item.product.title}}</h4>
+                  <p class="text-sm text-gray-500 italic">{{item.product.brand.name}}</p>
+                  <div class="flex justify-between items-center mt-3">
+                    <span class="text-[#0aad0a] font-bold text-lg">{{item.price | currency:'GBP'}}</span>
+                    <span class="text-gray-700 text-sm bg-gray-100 px-3 py-1 rounded-full shadow-sm">Qty: {{item.count}}</span>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </section>  

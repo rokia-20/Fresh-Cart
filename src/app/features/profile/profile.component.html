@@ -1,0 +1,74 @@
+<div class="max-w-md mx-auto p-8 bg-white rounded-2xl shadow-lg border border-gray-100 my-20">
+    <!-- Header -->
+    <h2 class="text-3xl font-extrabold text-center mb-8 text-[#0aad0a]">
+      User Profile
+    </h2>
+  
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()" class="space-y-6">
+      <!-- Name -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Name</label>
+        <div class="relative">
+          <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="Enter your name"
+            class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm 
+                   focus:border-[#0aad0a] focus:ring-2 focus:ring-[#0aad0a]/40 transition"
+          />
+        </div>
+      </div>
+  
+      <!-- Email -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Email</label>
+        <div class="relative">
+          <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+            class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm 
+                   focus:border-[#0aad0a] focus:ring-2 focus:ring-[#0aad0a]/40 transition"
+          />
+        </div>
+      </div>
+  
+      <!-- Phone -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Phone</label>
+        <div class="relative">
+          <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input
+            type="text"
+            formControlName="phone"
+            placeholder="Enter your phone number"
+            class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm 
+                   focus:border-[#0aad0a] focus:ring-2 focus:ring-[#0aad0a]/40 transition"
+          />
+        </div>
+      </div>
+    
+      <div class="flex flex-col items-center space-y-4 w-full">
+        <button
+          type="submit"
+          class="w-full md:w-full cursor-pointer bg-[#0aad0a] text-white py-3 px-4 rounded-lg font-semibold shadow-md 
+                 hover:bg-green-700 transition-transform transform hover:scale-[1.02] 
+                 focus:ring-2 focus:ring-offset-2 focus:ring-[#0aad0a]"
+        >
+          Save Changes
+        </button>
+      
+        <a 
+          routerLink="/reset" 
+          class="text-sm font-medium text-[#0aad0a] hover:text-green-700 
+                 transition-colors duration-200"
+        >
+          Change Password
+        </a>
+      </div>
+      
+    
+    </form>
+  </div>  

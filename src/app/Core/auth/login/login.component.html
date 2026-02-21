@@ -1,0 +1,43 @@
+<section class="flex items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16">
+    <div class="container max-w-md w-full bg-white shadow-lg rounded-2xl p-8">
+      <h2 class="text-3xl font-extrabold text-gray-800 text-center mb-8">
+        Login <span class="text-[#0aad0a]">Now</span>
+      </h2>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="submit()" class="space-y-6">
+        <app-input
+          [control]="loginForm.get('email')"
+          [typeInput]="'email'"
+          [idInput]="'email'"
+          [labelInput]="'Email'">
+        </app-input>
+  
+        <app-input
+          [control]="loginForm.get('password')"
+          [idInput]="'password'"
+          [labelInput]="'Password'">
+          Password must contain at least one uppercase letter, one lowercase letter,
+          one digit, and one special character.
+        </app-input>
+  
+        <button
+          type="submit"
+          class="btn rounded mb-3">
+          Login
+          @if (isLoading) {
+            <i class="fas fa-spinner animate-spin"></i>
+          }
+        </button>
+  
+        <div class="flex flex-col items-center space-y-2 text-sm mt-4">
+          <a routerLink="/forgetpassword" class="text-[#0aad0a] hover:underline">
+            Forgot Password?
+          </a>
+          <a routerLink="/register" class="text-gray-600">
+            Don’t have an account? <span class="font-semibold text-[#0aad0a] hover:underline">Register</span>
+          </a>
+        </div>
+
+      </form>
+    </div>
+  </section>  

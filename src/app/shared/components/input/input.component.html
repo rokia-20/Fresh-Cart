@@ -1,0 +1,54 @@
+<div class="relative pb-3">
+    @if (element === 'input') {
+        <input [class]="{
+            'border-red-600': control?.invalid && control?.touched,
+            'border-green-500': control?.valid && control?.touched}"
+            [formControl]="control" [type]="typeInput || (flag ? 'password' : 'text') " [id]="idInput" class="main-input peer" placeholder=" "/>
+    }@else if (element === 'text') {
+        <textarea [class]="{
+            'border-red-600': control?.invalid && control?.touched,
+            'border-green-500': control?.valid && control?.touched}"
+            [formControl]="control" [id]="idInput" class="main-input peer" placeholder=" "></textarea>
+    }
+
+    <label [class]="{
+        'text-red-600': control?.invalid && control?.touched,
+        'text-green-500': control?.valid && control?.touched}"
+        [for]="idInput" class="main-label">{{labelInput}}</label>
+    
+        @if (idInput == 'password' || idInput == 'rePassword' || idInput == 'currentPassword') {
+            <span class="absolute top-2/5 end-4 -translate-y-1/2 cursor-pointer">
+                <i 
+                    (click)="flag = !flag" 
+                    class="fas" 
+                    [ngClass]="flag ? 'fa-eye' : 'fa-eye-slash'">
+                </i>
+            </span>
+        }
+</div>
+@if (control?.errors && control?.touched) {
+    <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+        <div>
+            <ul class="mt-1.5 list-disc list-inside">
+                @if (control?.getError('required')) {
+                    <li>Input is Required.</li>
+                }
+                @if (control?.getError('minlength')) {
+                    <li>Input should be more than or equal 4 charcters</li>
+                }
+                @if (control?.getError('maxlength')) {
+                    <li>Input should be less than or equal 20 charcters</li>
+                }
+                @if (control?.getError('email')) {
+                    <li>please enter a valid email address</li>
+                }
+                @if (control?.getError('pattern')) {
+                    <li> <ng-content #name></ng-content> </li>
+                }
+                @if (control?.getError('mismatch')) {
+                    <li>Password confirmation is incorrect</li>
+                }
+            </ul>
+        </div>
+    </div>
+}

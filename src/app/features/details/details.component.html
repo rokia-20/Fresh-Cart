@@ -1,0 +1,62 @@
+<section class="min-h-screen bg-gray-50 flex items-center justify-center py-12">
+    <div class="w-full max-w-6xl bg-white rounded-3xl shadow-lg grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+  
+      <!-- LEFT: Product Image -->
+      <div class="flex flex-col items-center justify-center p-8 bg-white">
+        <img 
+          [src]="productDetails.imageCover"
+          [alt]="productDetails.title" 
+          class="w-[80%] max-h-[400px] object-contain"
+        >
+  
+        <!-- Thumbnails -->
+        <div class="flex mt-6 flex-wrap gap-4">
+            @for (img of productDetails.images; track $index) {
+              <img 
+                [src]="img" 
+                [alt]="productDetails.title"
+                (click)="swapWithCover(img)"
+                class="w-20 h-20 rounded-lg border border-gray-200 shadow-sm cursor-pointer object-cover transition hover:scale-110 hover:border-[#0aad0a] hover:shadow-md"
+                [class.border-[#0aad0a]]="img === selectedImage"
+                [class.ring-2]="img === selectedImage"
+                [class.ring-[#0aad0a]]="img === selectedImage"
+              >
+            }
+          </div>          
+      </div>
+      <!-- RIGHT: Product Info -->
+      <div class="flex flex-col justify-center p-10 space-y-6">
+        
+        <!-- Category -->
+        <span class="text-sm uppercase tracking-wider text-gray-500 font-medium">
+          {{productDetails.category.name}}
+        </span>
+  
+        <!-- Title -->
+        <h2 class="text-3xl font-bold text-gray-900">
+          {{productDetails.title}}
+        </h2>
+  
+        <!-- Rating -->
+        <div class="flex items-center space-x-2 text-yellow-500">
+          <i class="fas fa-star"></i>
+          <span class="text-gray-800 font-medium">{{productDetails.ratingsAverage}}</span>
+        </div>
+  
+        <p class="text-gray-600 leading-relaxed text-base">
+          {{productDetails.description}}
+        </p>
+  
+        <div class="text-2xl font-semibold text-[#0aad0a]">
+          {{productDetails.price | currency:'GBP'}}
+        </div>
+
+          <button 
+            (click)="addToCart(productDetails._id)" 
+            class="bg-[#0aad0a] hover:bg-[#099309] text-white px-6 py-3 rounded-xl shadow-md font-medium transition cursor-pointer"
+          >
+            Add to Cart
+          </button>
+      </div>
+    </div>
+  </section>  

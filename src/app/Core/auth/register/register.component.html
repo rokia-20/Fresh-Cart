@@ -1,0 +1,63 @@
+<section class="flex items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16">
+    <div class="container max-w-lg w-full bg-white shadow-lg rounded-2xl p-8">
+      <h2 class="text-3xl font-extrabold text-gray-800 text-center mb-8">
+        Register <span class="text-[#0aad0a]">Now</span>
+      </h2>
+  
+      <form [formGroup]="registerForm" (ngSubmit)="submit()" class="space-y-6">
+        <app-input
+          [control]="registerForm.get('name')"
+          [typeInput]="'text'"
+          [idInput]="'name'"
+          [labelInput]="'Name'">
+        </app-input>
+  
+        <app-input
+          [control]="registerForm.get('email')"
+          [typeInput]="'email'"
+          [idInput]="'email'"
+          [labelInput]="'Email'">
+        </app-input>
+  
+        <app-input
+          [control]="registerForm.get('password')"
+          [idInput]="'password'"
+          [labelInput]="'Password'">
+          Password must contain at least one uppercase letter, one lowercase letter,
+          one digit, and one special character.
+        </app-input>
+  
+        <app-input
+          [control]="registerForm.get('rePassword')"
+          [idInput]="'rePassword'"
+          [labelInput]="'Confirm Password'">
+        </app-input>
+  
+        <app-input
+          [control]="registerForm.get('phone')"
+          [typeInput]="'tel'"
+          [idInput]="'phone'"
+          [labelInput]="'Phone'">
+          Phone number must start with 010, 011, 012, or 015 and be followed by 8 digits.
+        </app-input>
+  
+        <button
+          [disabled]="isLoading"
+          type="submit"
+          class="w-full flex items-center justify-center gap-2 bg-[#0aad0a] hover:bg-[#099309] text-white font-semibold py-3 rounded-xl shadow-md transition duration-300">
+          Register
+          @if (isLoading) {
+            <i class="fas fa-spinner animate-spin"></i>
+          }
+        </button>
+  
+        <div class="text-center mt-4 text-sm">
+          <p class="text-gray-600">
+            Already have an account?
+            <a routerLink="/login" class="text-[#0aad0a] font-semibold hover:underline cursor-pointer">Login</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+  
